@@ -1,0 +1,201 @@
+1️⃣ Where is the legal shareholder register?
+
+This is the most important question.
+
+Where is the official shareholder registry legally maintained?
+
+Possible answers:
+
+Answer	Architecture
+Transfer Agent system	Mirror OSS
+Digital TA platform	Hybrid
+Smart contract	Fully on-chain
+
+If the registry is off-chain → blockchain must mirror the registry.
+
+2️⃣ Who acts as the Transfer Agent?
+
+Ask:
+
+Who is the registered Transfer Agent responsible for the shareholder records?
+
+Examples:
+
+BNY Mellon
+
+State Street Corporation
+
+Computershare
+
+If a TA exists → the system is not fully on-chain.
+
+3️⃣ Who controls minting and burning?
+
+Ask:
+
+Which system or entity authorizes mint and burn operations?
+
+Possible models:
+
+Mint/Burn control	Architecture
+Transfer agent system	Mirror
+TA platform API	Digital TA
+Smart contract logic	On-chain
+
+This defines the token orchestration layer.
+
+4️⃣ Where is compliance enforced?
+
+Ask:
+
+Where are KYC, eligibility, and transfer restrictions enforced?
+
+Possible answers:
+
+Compliance layer	Model
+TA / admin system	Mirror
+Compliance engine + smart contract	Hybrid
+Smart contract whitelist	On-chain
+5️⃣ Is the blockchain the legal record?
+
+Ask explicitly:
+
+Is the blockchain ledger considered the legal record of ownership?
+
+Possible answers:
+
+Answer	Meaning
+No	Mirror
+Partially	Hybrid
+Yes	On-chain
+
+In the U.S., regulators like the U.S. Securities and Exchange Commission generally expect an official registry.
+
+6️⃣ Is reconciliation required?
+
+Ask:
+
+Is reconciliation required between blockchain balances and the official registry?
+
+If reconciliation exists:
+
+OSS ledger
+   ↔
+Blockchain balances
+
+then the architecture is Mirror OSS.
+
+7️⃣ What role does the blockchain play?
+
+Ask:
+
+What is the role of the blockchain in the platform?
+
+Possible roles:
+
+Blockchain role	Architecture
+Representation of shares	Mirror
+Transfer layer	Hybrid
+Official ledger	On-chain
+8️⃣ What entity controls investor wallets?
+
+Ask:
+
+How are wallets linked to investor identities?
+
+Possible answers:
+
+Wallet model	Architecture impact
+TA whitelist	Mirror
+Compliance engine	Hybrid
+Self custody allowed	On-chain
+9️⃣ What happens during subscription?
+
+Ask:
+
+Which event happens first: registry update or token mint?
+
+Two models exist:
+
+Mirror model
+
+TA update
+   ↓
+Token mint
+
+On-chain model
+
+Token mint
+   ↓
+Registry update
+
+This tells you which system is authoritative.
+
+🔟 What blockchain is used?
+
+Ask:
+
+Which blockchain network is used?
+
+Common options include:
+
+Ethereum
+
+permissioned networks
+
+private chains
+
+The chain influences:
+
+custody
+
+compliance
+
+settlement model
+
+📊 The architecture decision tree
+
+Once you answer the first three questions, the architecture becomes obvious.
+
+Where is the shareholder registry?
+
+         │
+         ├── Transfer agent
+         │       → Mirror OSS
+         │
+         ├── Digital TA platform
+         │       → Hybrid architecture
+         │
+         └── Smart contract
+                 → Fully on-chain
+🧠 The three questions that matter most
+
+If you only ask three things, ask these:
+
+1️⃣ Where is the official shareholder register maintained?
+2️⃣ Who controls mint/burn of tokens?
+3️⃣ Is the blockchain the legal record of ownership?
+
+These three answers determine 90% of the architecture.
+
+✅ For your IT architecture work
+
+If the answers indicate:
+
+Transfer agent registry
+
+mint controlled off-chain
+
+blockchain not legal ledger
+
+then you must design a Mirror OSS architecture.
+
+That means your system must include:
+
+token orchestration layer
+
+reconciliation service
+
+TA integration
+
+compliance engine
